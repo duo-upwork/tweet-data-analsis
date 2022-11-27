@@ -24,16 +24,17 @@ const twitterCLient = new TwitterApi ( authOptions);
 
 //ENDPOINTS:
 app.get ( '/', ( req, res) => {
-    const twit = twitterCLient.v2
-    //  ( 'JavaScript', {'media.fields': 'url'})
-    // .then ( ( twits ) => {
-    //     return twits.json ();
-    // })
-    // .then ( (data) => {
-    //     console.log (data);
-    //     res.json(data)
-    // })
-    res.json(twit);
+    twitterCLient.v2.singleTweet( '1596767162638938112')
+    .then ( ( twits ) => {
+         console.log (twits)
+         res.json ( twits );
+     })
+    .catch ( ( e ) => {
+        res.json({
+            error_msg: e,
+        });
+    })
+    //res.json(twit);
 })
 
 //START SERVER:
