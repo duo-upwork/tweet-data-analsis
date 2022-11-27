@@ -1,7 +1,7 @@
 //DEPENDENCIES:
 import express from 'express';
 import * as dotenv from 'dotenv';
-import { TwitterAPI} from 'twitter-api-v2';
+import { TwitterApi} from 'twitter-api-v2';
 
 
 //INTERNAL MODULES:
@@ -19,7 +19,7 @@ app.use ( express.urlencoded ( { extended: true } ));
 dotenv.config ();
 
 //TWITTER CLIENT:
-const twitterCLient = new TwitterAPI ( authOptions);
+const twitterCLient = new TwitterApi ( authOptions);
 
 
 //ENDPOINTS:
