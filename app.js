@@ -24,9 +24,16 @@ const twitterCLient = new TwitterApi ( authOptions);
 
 //ENDPOINTS:
 app.get ( '/', ( req, res) => {
-    const twitterCLientData = twitterCLient.v2;
-    console.log ( twitterCLientData);
-    res.json ( twitterCLientData);
+    const twit = twitterCLient.v2
+    //  ( 'JavaScript', {'media.fields': 'url'})
+    // .then ( ( twits ) => {
+    //     return twits.json ();
+    // })
+    // .then ( (data) => {
+    //     console.log (data);
+    //     res.json(data)
+    // })
+    res.json(twit);
 })
 
 //START SERVER:
