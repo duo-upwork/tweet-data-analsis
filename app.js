@@ -9,6 +9,10 @@ const app = express();
 //ENVIRONMENTS:
 dotenv.config ();
 
+//TWITTER CLIENT:
+const twitterCLient = new TwitterAPI ( {
+    
+})
 
 //ENDPOINTS:
 
