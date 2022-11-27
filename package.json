@@ -1,0 +1,24 @@
+{
+  "name": "extract-tweets",
+  "version": "1.0.0",
+  "description": "tweet data analysis",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duo-upwork/tweet-data-analsis.git"
+  },
+  "keywords": [
+    "tweeter",
+    "tweet",
+    "nodejs"
+  ],
+  "author": "duo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duo-upwork/tweet-data-analsis/issues"
+  },
+  "homepage": "https://github.com/duo-upwork/tweet-data-analsis#readme"
+}
