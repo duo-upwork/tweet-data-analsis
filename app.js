@@ -2,6 +2,7 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
 import { TwitterApi} from 'twitter-api-v2';
+import fs from 'fs';
 
 
 //INTERNAL MODULES:
@@ -31,11 +32,23 @@ app.get ( '/', ( req, res) => {
         .then ( (timeline) => {
             let twitterPosts = [];
             for (let tweet of timeline.data.data) {
-                twitterPosts = [...twitterPosts, tweet.text];
-             }
-            console.log (timeline.data)
-            res.json ( twitterPosts );
-        })
+                twitterPosts = [...twitterPosts, {tweet: tweet.text}];
+             };
+             
+            let file = fs.createWriteStream ('tweeps.json')
+            file.on('error', (err) => {
+                res.json (err);
+            });
+            twitterPosts.forEach ( (tweet) => {
+                for ( let singleTweet in tweet) {
+                    console.log (tweet[singleTweet]);
+                    file.write (tweet[singleTweet]);
+                }
+                
+            } );
+            file.end ();
+            res.json (twitterPosts);
+             })
         .catch ( ( e ) => {
             res.json ( e );
         });
