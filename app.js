@@ -24,14 +24,25 @@ const twitterCLient = new TwitterApi ( authOptions);
 
 //ENDPOINTS:
 app.get ( '/', ( req, res) => {
-    twitterCLient.v2.singleTweet( '1596767162638938112')
+    twitterCLient.v2.usersByUsernames( 'realdogen')
     .then ( ( twits ) => {
-         console.log (twits)
-         res.json ( twits );
+        //res.json ( twits.data[0].id)
+        twitterCLient.v2.userTimeline (twits.data[0].id)
+        .then ( (timeline) => {
+            let twitterPosts = [];
+            for (let tweet of timeline.data.data) {
+                twitterPosts = [...twitterPosts, tweet.text];
+             }
+            console.log (timeline.data)
+            res.json ( twitterPosts );
+        })
+        .catch ( ( e ) => {
+            res.json ( e );
+        });
      })
     .catch ( ( e ) => {
         res.json({
-            error_msg: e,
+            error_msg: e.message,
         });
     })
     //res.json(twit);
