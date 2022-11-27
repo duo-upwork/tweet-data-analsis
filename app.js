@@ -3,6 +3,10 @@ import express from 'express';
 import * as dotenv from 'dotenv';
 import { TwitterAPI} from 'twitter-api-v2';
 
+
+//INTERNAL MODULES:
+import authOptions from './helpers/auth.twitter';
+
 //APP INSTANCES:
 const app = express();
 
@@ -10,9 +14,7 @@ const app = express();
 dotenv.config ();
 
 //TWITTER CLIENT:
-const twitterCLient = new TwitterAPI ( {
-    
-})
+const twitterCLient = new TwitterAPI ( authOptions);
 
 //ENDPOINTS:
 
